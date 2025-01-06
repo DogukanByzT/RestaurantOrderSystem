@@ -88,6 +88,7 @@ namespace RestaurantTerminalSystem.UI.Forms.AdminForms
             if (value != null)
             {
                 _service.Delete(value.Id);
+                _context.SaveChanges();
             }
             else
             {
@@ -97,6 +98,23 @@ namespace RestaurantTerminalSystem.UI.Forms.AdminForms
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var value = (Product)lstList.SelectedItem;
+                var value2 = (Category)cmbCategories.SelectedItem;
+                byte[] imageBytes = File.ReadAllBytes(txtPicture.Text);
+                value.Name = txtProductName.Text;
+                value.Price = Convert.ToDecimal(txtPrice.Text);
+                value.Category = value2;
+                value.Image = imageBytes;
+                MessageBox.Show("Güncelleme İşlemi Başarılı");
+                _service.Update(value);
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bir sorun meydana geldi");
+            }
 
         }
 

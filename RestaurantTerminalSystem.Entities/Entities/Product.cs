@@ -17,6 +17,11 @@ namespace RestaurantTerminalSystem.Entities.Entities
         public Category? Category { get; set; }
 
         public int TableId { get; set; }
-        
+
+        public override string ToString()
+        {
+            return $"{Name} {Price} | {Category.Name}";
+        }
+
     }
 }

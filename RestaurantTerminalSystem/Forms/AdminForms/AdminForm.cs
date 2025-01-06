@@ -20,7 +20,7 @@ namespace RestaurantTerminalSystem.UI.Forms
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-           
+
         }
 
 
@@ -42,6 +42,17 @@ namespace RestaurantTerminalSystem.UI.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             AdminProductForm form = new AdminProductForm();
+            ShowForm(form);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AdminEmployeeForm form = new AdminEmployeeForm();
             ShowForm(form);
         }
     }

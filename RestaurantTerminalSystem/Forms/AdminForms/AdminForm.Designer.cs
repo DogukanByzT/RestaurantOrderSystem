@@ -95,6 +95,7 @@ namespace RestaurantTerminalSystem.UI.Forms
             button3.TabIndex = 5;
             button3.Text = "Siparişleri Yönet";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -107,6 +108,7 @@ namespace RestaurantTerminalSystem.UI.Forms
             button2.TabIndex = 4;
             button2.Text = "Çalışanları Yönet";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
