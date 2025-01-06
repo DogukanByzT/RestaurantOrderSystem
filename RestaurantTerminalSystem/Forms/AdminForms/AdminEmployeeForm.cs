@@ -42,6 +42,7 @@ namespace RestaurantTerminalSystem.UI.Forms.AdminForms
                     Name = txtEmployeeName.Text,
                     Surname = txtEmployeeSurname.Text,
                     Position = txtPosition.Text,
+                    Password = txtPassword.Text,
                 };
 
                 employeeService.Create(employee);
@@ -87,7 +88,7 @@ namespace RestaurantTerminalSystem.UI.Forms.AdminForms
                 value.Name = txtEmployeeName.Text;
                 value.Surname = txtEmployeeSurname.Text;
                 value.Position = txtPosition.Text;
-
+                value.Password = txtPassword.Text;
                 employeeService.Update(value);
                 context.SaveChanges();
             }

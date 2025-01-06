@@ -35,6 +35,8 @@
             txtPosition = new TextBox();
             label3 = new Label();
             lstList = new ListBox();
+            txtPassword = new TextBox();
+            label4 = new Label();
             SuspendLayout();
             // 
             // btnList
@@ -114,11 +116,29 @@
             lstList.Size = new Size(308, 379);
             lstList.TabIndex = 17;
             // 
+            // txtPassword
+            // 
+            txtPassword.Location = new Point(29, 191);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(281, 23);
+            txtPassword.TabIndex = 19;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(29, 173);
+            label4.Name = "label4";
+            label4.Size = new Size(86, 15);
+            label4.TabIndex = 18;
+            label4.Text = "Personel Şifresi";
+            // 
             // AdminEmployeeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(856, 498);
+            Controls.Add(txtPassword);
+            Controls.Add(label4);
             Controls.Add(lstList);
             Controls.Add(txtPosition);
             Controls.Add(label3);
@@ -140,6 +160,8 @@
             Controls.SetChildIndex(label3, 0);
             Controls.SetChildIndex(txtPosition, 0);
             Controls.SetChildIndex(lstList, 0);
+            Controls.SetChildIndex(label4, 0);
+            Controls.SetChildIndex(txtPassword, 0);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -153,5 +175,7 @@
         private TextBox txtPosition;
         private Label label3;
         private ListBox lstList;
+        private TextBox txtPassword;
+        private Label label4;
     }
 }

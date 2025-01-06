@@ -1,11 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using RestaurantTerminalSystem.DataAccess.Context;
+using RestaurantTerminalSystem.Entities.Entities;
 using RestaurantTerminalSystem.UI.Forms;
 
 namespace RestaurantTerminalSystem
 {
     public partial class MainForm : Form
     {
+        private readonly ApplicationDbContext _context;
         public MainForm()
         {
+            _context = new ApplicationDbContext();
             InitializeComponent();
         }
 
@@ -20,13 +25,18 @@ namespace RestaurantTerminalSystem
 
 
 
-        private void LoadProducts()
+        private void LoadProducts(string categoryName = null)
         {
-            var products = new List<(string Name, decimal Price, string ImagePath)>
-        {
-        ("Çay", 20.00m, "C:\\Users\\doguk\\Desktop\\TerminalSystem\\RestaurantTerminalSystem\\RestaurantTerminalSystem\\Images\\cay.png")
+            // Veritabanýndan tüm ürünleri çek
 
-        };
+            flowLayoutPanel1.Controls.Clear(); // Önce paneli temizle
+
+            var products = string.IsNullOrEmpty(categoryName)
+            ? _context.Products.Include(p => p.Category).ToList()
+            : _context.Products.Include(p => p.Category)
+                        .Where(p => p.Category.Name == categoryName)
+                        .ToList();
+
             foreach (var product in products)
             {
                 // Her ürün için panel oluþtur
@@ -39,14 +49,23 @@ namespace RestaurantTerminalSystem
                     Tag = product // Ürün bilgisini sakla
                 };
                 productPanel.Click += ProductPanel_Click;
+
+                // Resim verisini PictureBox'a yükle
                 var pictureBox = new PictureBox
                 {
-                    ImageLocation = product.ImagePath,
                     SizeMode = PictureBoxSizeMode.CenterImage,
                     Dock = DockStyle.Top,
                     Height = 100,
-                    Width = 100,
+                    Width = 100
                 };
+
+                if (product.Image != null && product.Image.Length > 0)
+                {
+                    using (var ms = new MemoryStream(product.Image))
+                    {
+                        pictureBox.Image = Image.FromStream(ms);
+                    }
+                }
 
                 // Ürün adý
                 var nameLabel = new Label
@@ -74,7 +93,6 @@ namespace RestaurantTerminalSystem
                 // FlowLayoutPanel'e ekle
                 flowLayoutPanel1.Controls.Add(productPanel);
             }
-
         }
 
         private void ProductPanel_Click(object sender, EventArgs e)
@@ -82,9 +100,12 @@ namespace RestaurantTerminalSystem
             var clickedPanel = sender as Panel;
             if (clickedPanel != null)
             {
-                // Panelin Tag'ine atanmýþ ValueTuple'ý al
-                var product = ((string Name, decimal Price, string ImagePath))clickedPanel.Tag;
-                int yOffset = pnlHeader.Height + (pnlBasket.Controls.Count * 30); // pnlHeader'ýn yüksekliði + her kontrol için 30 piksel boþluk
+                // Panelin Tag'ine atanmýþ Product nesnesini al
+                var product = (Product)clickedPanel.Tag;
+                if (product == null) return;
+
+                int yOffset = pnlHeader.Height + (pnlBasket.Controls.Count * 30); // pnlHeader yüksekliði + boþluk
+
                 // Yeni bir Label oluþtur ve ürün bilgilerini yazdýr
                 var lblProductInfo = new Label
                 {
@@ -101,11 +122,17 @@ namespace RestaurantTerminalSystem
             }
         }
 
+
         private void btnAdmin_Click(object sender, EventArgs e)
         {
             AdminForm form = new AdminForm();
             form.Show();
-           
+
+        }
+
+        private void btnAnaYemek_Click(object sender, EventArgs e)
+        {
+            LoadProducts("Ana Yemekler");
         }
     }
 }

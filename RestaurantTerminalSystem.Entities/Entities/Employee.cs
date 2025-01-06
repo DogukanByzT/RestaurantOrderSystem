@@ -12,7 +12,7 @@ namespace RestaurantTerminalSystem.Entities.Entities
         public string? Name { get; set; }
         public string? Surname { get; set; }
         public string? Position { get; set; }
-
+        public string? Password { get; set; }
         public List<Order>? Orders { get; set; }
     }
 }
