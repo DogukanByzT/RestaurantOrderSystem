@@ -30,6 +30,7 @@ namespace RestaurantTerminalSystem.UI.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             panel1 = new Panel();
             button5 = new Button();
             button4 = new Button();
@@ -40,6 +41,7 @@ namespace RestaurantTerminalSystem.UI.Forms
             panel2 = new Panel();
             label1 = new Label();
             pnlForm = new Panel();
+            btnback = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -47,6 +49,7 @@ namespace RestaurantTerminalSystem.UI.Forms
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(199, 239, 207);
+            panel1.Controls.Add(btnback);
             panel1.Controls.Add(button5);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(button3);
@@ -57,7 +60,7 @@ namespace RestaurantTerminalSystem.UI.Forms
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(200, 450);
+            panel1.Size = new Size(200, 596);
             panel1.TabIndex = 0;
             // 
             // button5
@@ -65,9 +68,9 @@ namespace RestaurantTerminalSystem.UI.Forms
             button5.Dock = DockStyle.Top;
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button5.Location = new Point(0, 350);
+            button5.Location = new Point(0, 400);
             button5.Name = "button5";
-            button5.Size = new Size(200, 50);
+            button5.Size = new Size(200, 60);
             button5.TabIndex = 7;
             button5.Text = "Masaları Yönet";
             button5.UseVisualStyleBackColor = true;
@@ -77,9 +80,9 @@ namespace RestaurantTerminalSystem.UI.Forms
             button4.Dock = DockStyle.Top;
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button4.Location = new Point(0, 300);
+            button4.Location = new Point(0, 340);
             button4.Name = "button4";
-            button4.Size = new Size(200, 50);
+            button4.Size = new Size(200, 60);
             button4.TabIndex = 6;
             button4.Text = "Sipariş Detayları";
             button4.UseVisualStyleBackColor = true;
@@ -89,9 +92,9 @@ namespace RestaurantTerminalSystem.UI.Forms
             button3.Dock = DockStyle.Top;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button3.Location = new Point(0, 250);
+            button3.Location = new Point(0, 280);
             button3.Name = "button3";
-            button3.Size = new Size(200, 50);
+            button3.Size = new Size(200, 60);
             button3.TabIndex = 5;
             button3.Text = "Siparişleri Yönet";
             button3.UseVisualStyleBackColor = true;
@@ -102,9 +105,9 @@ namespace RestaurantTerminalSystem.UI.Forms
             button2.Dock = DockStyle.Top;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button2.Location = new Point(0, 200);
+            button2.Location = new Point(0, 220);
             button2.Name = "button2";
-            button2.Size = new Size(200, 50);
+            button2.Size = new Size(200, 60);
             button2.TabIndex = 4;
             button2.Text = "Çalışanları Yönet";
             button2.UseVisualStyleBackColor = true;
@@ -115,9 +118,9 @@ namespace RestaurantTerminalSystem.UI.Forms
             button1.Dock = DockStyle.Top;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            button1.Location = new Point(0, 150);
+            button1.Location = new Point(0, 160);
             button1.Name = "button1";
-            button1.Size = new Size(200, 50);
+            button1.Size = new Size(200, 60);
             button1.TabIndex = 3;
             button1.Text = "Ürünleri Yönet";
             button1.UseVisualStyleBackColor = true;
@@ -130,7 +133,7 @@ namespace RestaurantTerminalSystem.UI.Forms
             btnAdminCategories.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             btnAdminCategories.Location = new Point(0, 100);
             btnAdminCategories.Name = "btnAdminCategories";
-            btnAdminCategories.Size = new Size(200, 50);
+            btnAdminCategories.Size = new Size(200, 60);
             btnAdminCategories.TabIndex = 2;
             btnAdminCategories.Text = "Kategorileri Yönet";
             btnAdminCategories.UseVisualStyleBackColor = true;
@@ -162,14 +165,25 @@ namespace RestaurantTerminalSystem.UI.Forms
             pnlForm.Dock = DockStyle.Fill;
             pnlForm.Location = new Point(200, 0);
             pnlForm.Name = "pnlForm";
-            pnlForm.Size = new Size(600, 450);
+            pnlForm.Size = new Size(833, 596);
             pnlForm.TabIndex = 1;
+            // 
+            // btnback
+            // 
+            btnback.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            btnback.Image = (Image)resources.GetObject("btnback.Image");
+            btnback.Location = new Point(21, 490);
+            btnback.Name = "btnback";
+            btnback.Size = new Size(153, 73);
+            btnback.TabIndex = 8;
+            btnback.UseVisualStyleBackColor = true;
+            btnback.Click += btnback_Click;
             // 
             // AdminForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1033, 596);
             Controls.Add(pnlForm);
             Controls.Add(panel1);
             Name = "AdminForm";
@@ -195,5 +209,6 @@ namespace RestaurantTerminalSystem.UI.Forms
         private Button btnAdminCategories;
         private Label label1;
         private Panel pnlForm;
+        private Button btnback;
     }
 }

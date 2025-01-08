@@ -55,5 +55,12 @@ namespace RestaurantTerminalSystem.UI.Forms
             AdminEmployeeForm form = new AdminEmployeeForm();
             ShowForm(form);
         }
+
+        private void btnback_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainForm form = new MainForm();
+            form.Show();
+        }
     }
 }
