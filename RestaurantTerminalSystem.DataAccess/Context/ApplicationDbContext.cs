@@ -14,7 +14,7 @@ namespace RestaurantTerminalSystem.DataAccess.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=192.168.1.104;Initial Catalog=RestaurantTerminalDB;User Id=BYZT;Password=byzt5561; Integrated Security=False;TrustServerCertificate=True;Persist Security Info=False;");
+            optionsBuilder.UseSqlServer("***");
         }
     }
 }
